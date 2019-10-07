@@ -1,0 +1,77 @@
+# PYTHON Logical GATE
+
+## and gate
+import numpy as np
+and_ = []
+def AND(x1,x2):
+    w1,w2,theta=0.5,0.5,0.8
+    tmp = w1*x1 + w2*x2
+    if tmp <= theta:
+        h =0
+        return h
+    else:
+        h = 1
+        return h
+    and_.append(h)    
+====================================
+ print(str([0,0]),"==>",AND(0,0))
+print(str([0,1]),"==>",AND(0,1))
+print(str([1,0]),"==>",AND(1,0))
+print(str([1,1]),"==>",AND(1,1))
+====================================
+
+[0, 0] ==> 0
+[0, 1] ==> 0
+[1, 0] ==> 0
+[1, 1] ==> 1  
+====================================
+## nand gate
+import numpy as np
+nand_= []
+def NAND(x1,x2):
+    w1,w2,theta=-0.5,-0.5,-0.7
+    tmp = w1*x1 + w2*x2
+    if tmp <= theta:
+        h=0
+        return h
+    else:
+        h=1
+        return h
+    nand_.append(h)   
+======================================
+print(str([0,0]),"==>",NAND(0,0))
+print(str([0,1]),"==>",NAND(0,1))
+print(str([1,0]),"==>",NAND(1,0))
+print(str([1,1]),"==>",NAND(1,1))
+======================================
+[0, 0] ==> 1
+[0, 1] ==> 1
+[1, 0] ==> 1
+[1, 1] ==> 0  
+
+## or gate
+import numpy as np
+or_= []
+def OR(x1,x2):
+    
+    w1,w2,theta=0.5,0.5,0.2
+    tmp = w1*x1 + w2*x2
+    if tmp <= theta:
+        h=0
+        return h
+    else:
+        h=1  
+        return h
+    or_.append(h)
+===================================
+print(str([0,0]),"==>",OR(0,0))
+print(str([0,1]),"==>",OR(0,1))
+print(str([1,0]),"==>",OR(1,0))
+print(str([1,1]),"==>",OR(1,1))
+===================================
+
+[0, 0] ==> 0
+[0, 1] ==> 1
+[1, 0] ==> 1
+[1, 1] ==> 1  
+=======================================
