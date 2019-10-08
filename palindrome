@@ -1,0 +1,13 @@
+a = input("회문을 입려하시오.\n")
+b = 0
+t = -1
+for i in range(len(a)):
+    if(a[b] != a[t]):
+        re = False
+    else:
+      re =  True
+
+if(re == False):
+    print('x')
+else:
+    print('0')
