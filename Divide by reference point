@@ -1,0 +1,7 @@
+g = int(input('기준\n'))
+n = input('적으시오\n').split()
+for i in range(len(n)):
+    if (n[i] == n[g]):
+        print()
+    else:
+        print(n[i],end=' ')
