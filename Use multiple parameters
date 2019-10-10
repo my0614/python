@@ -1,0 +1,17 @@
+def add(ch,*gg):
+    if ch == "add":
+        re = 0
+        for i in gg:
+            re = re + i
+
+    elif ch == "mul":
+        re = 1
+        for i in gg:
+            re = re * i
+    return re
+
+re = add('mul',5,9,8)
+print(re)
+
+
+
