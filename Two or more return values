@@ -1,0 +1,8 @@
+def add(a,b):
+    return a+b,a*b
+re = add(3,5)
+print(re)
+
+''' return 값이 1개 이상을 받고 싶다면 변수 2개에 
+각각 해주면 된다. 예) re,re2 = add(3,5)의
+결과값은 8,15 가 나온다. 튜플의 형태로'''
