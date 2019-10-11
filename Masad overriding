@@ -1,0 +1,61 @@
+
+ # fourcal 이라는 class 생성
+class FourCal:
+    #__init__라는 매서드는 생성자가 된다.
+    def __init__(self,in1,in2):
+        self.a = in1
+        self.b = in2
+     # fourcal class 에서 매서드 생성
+    def setdata(self, in1, in2):
+        self.a = in1
+        self.b = in2
+    # 더하기 기능
+    def add(self):
+        re = self.a + self.b
+        return  re
+    # 곱하기 기능
+    def mul(self):
+        re = self.a * self.b
+        return  re
+    # 나누기
+    def div(self):
+        re = self.a / self.b
+        return  re
+
+    def sub(self):
+        re = self.a - self.b
+        return  re
+
+
+
+
+
+# fourcal이라는 class 를 obj1 이라는 객체에 담기
+
+# class에 있는 setdata라는 함수에 4,2를 대입한다.
+
+'''
+생성자란?
+객체가 생성될때 자동으로 호출되는 매서드를 말한다.
+왜 상속을 해야 할까?
+-> 기존에 있는 클래스를 변경하지 않고 수정하거나 추가 할려고 사용한다.
+'''
+# 클래스를 상속받기 위해서는 클래스의 매개변수 안에 상속할 클래스 이름을 적어야 한다.
+class MoreFourCal(FourCal):
+    def pow(self):
+        re = self.a ** self.b
+        return re
+'''
+매서드 오버라이딩 이란?
+->부모 클래스에 있는 동일한 메서드를 동이란 이름으로 다시 만드는 것ㅇ르 매서드 오버라이딩이라고 한다.
+'''
+class SafeFourCal(FourCal):
+    def mul(self):
+        if self.b == 0:
+            return 'fail'
+        else:
+            return 0
+
+
+obj1  = SafeFourCal(10,0)
+print(obj1.mul())
