@@ -1,0 +1,10 @@
+f = open("pink.txt",'w')
+text = f.write('hello world')
+f.close()
+
+text = "python"
+
+
+f = open("pink.txt",'w')
+f.write(text)
+f.close()
