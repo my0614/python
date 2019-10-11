@@ -1,0 +1,9 @@
+''' 
+첫번째 줄 읽기 
+readline
+'''
+# readline.py
+f = open("love.txt",'r')
+line  = f.readline()
+print(line)
+f.close()
