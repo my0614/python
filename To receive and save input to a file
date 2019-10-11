@@ -1,0 +1,5 @@
+adf = input()
+f = open('oio.txt','a')
+f.write(adf)
+f.write('\n')
+f.close()
