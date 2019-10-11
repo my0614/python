@@ -1,0 +1,41 @@
+
+ # fourcal 이라는 class 생성
+class FourCal:
+    # fourcal class 에서 매서드 생성
+    def setdata(self, in1, in2):
+        self.a = in1
+        self.b = in2
+    # 더하기 기능
+    def add(self):
+        re = self.a + self.b
+        return  re
+    # 곱하기 기능
+    def mul(self):
+        re = self.a * self.b
+        return  re
+    # 나누기
+    def div(self):
+        re = self.a / self.b
+        return  re
+
+    def sub(self):
+        re = self.a - self.b
+        return  re
+
+
+
+
+
+# fourcal이라는 class 를 obj1 이라는 객체에 담기
+obj1 = FourCal()
+# class에 있는 setdata라는 함수에 4,2를 대입한다.
+obj1.setdata(4, 2)
+print(obj1.sub())
+'''
+# 여기서 말하는 id는 주소값이다.
+print(obj1.a)
+print(obj1.b)
+
+aid = id(obj1.b)
+print(aid)
+'''
