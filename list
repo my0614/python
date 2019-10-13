@@ -1,0 +1,8 @@
+# two_times.py
+def two_times(numberList):
+    re = []
+    for number in numberList:
+        re.append(number*2)
+    return re
+re = two_times([1,2,3,4])
+print(re)
