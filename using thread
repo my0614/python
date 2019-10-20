@@ -1,0 +1,22 @@
+# thread_test.py
+import time
+import threading
+
+def long_task():
+    for i in range(5):
+        time.sleep(1)
+        print("working.%s\n" % i)
+
+print("start")
+
+threas = []
+for i in range(5):
+    t = threading.Thread(target=long_task)
+    threas.append(t)
+
+for t in threas:
+    t.start()
+for i in threas:
+    t.join()
+
+print("end")
