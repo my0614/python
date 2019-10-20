@@ -1,0 +1,4 @@
+def GuGu(value):
+    for i in range(10):
+        print('%d * %d = %d' % (value, i,value*i))
+GuGu(2)
