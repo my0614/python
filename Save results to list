@@ -1,0 +1,7 @@
+def GuGu(value):
+    re = []
+    for i in range(1,10):
+        re.append(value * i)
+
+    print(re)
+GuGu(2)
