@@ -1,0 +1,11 @@
+import tensorflow as tf
+
+a = tf.constant(3.0 , tf.float32)
+b = tf.constant(4.0 , tf.float32)
+c = tf.add(a,b)
+print('a:',a)
+print(b)
+print(c)
+sess = tf.Session()
+print("sess:" ,sess.run([a,b]))
+print("sess(c):" ,sess.run(c))
