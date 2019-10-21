@@ -1,0 +1,46 @@
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+import pickle
+from dataset.mnist import load_mnist
+from common.functions import sigmoid, softmax
+def getData():
+    (trainimg, trainLbl),(testimg, testLbl) = load_mnist(normalize= True,flatten = True, one_hot_label = False)
+    print(trainimg.shape)
+    print(trainLbl.shape)
+    print(testimg.shape)
+    print(testLbl.shape)
+    return (trainimg, trainLbl),(testimg, testLbl)
+
+def initNetwork():
+    with open("dataset/sample_weight.pkl" ,"rb") as f :
+        network = pickle.load(f)
+    return network
+
+def predict(network,x):
+    w1,w2,w3 = network['w1'],network['w2'],network['w3']
+    b1,b2,b3 = network['b1'],network['b2'],network['b3']
+    a1 = np.dot(x ,w1) +b1
+    z1 = sigmoid(a1)
+    a2 = np.dot(x ,w2) +b2
+    z2 = sigmoid(a2)
+    a3 = np.dot(x ,w) +b3
+    z3 = sigmoid(a3)
+    y = softmax(a3)
+    return y
+    (trainimg, trainLbl),(testimg, testLbl) = getData()
+network =  initNetwork()
+firstImg = trainimg[0].reshape(28,28)
+firstLbl = trainLbl[0]
+print(firstLbl)
+plt.imshow(firstImg,cmap ='gray',interpolation='nearest')
+plt.show()
+acc = 0
+print(len(trainimg))
+for idx in range(len(trainimg)):
+    y = predict(network, tainimg[idx])
+    p = np.argmax(y)
+    if p == trainLbl[idx]:
+        acc += 1
+print(acc)
+print("acc:" + str(round(acc/ len(trainimg) * 100,  3)) +'%')
