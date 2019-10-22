@@ -1,0 +1,12 @@
+n = int(input())
+for i in range(n):
+    print(f"{format(' * '*((i+1)),'^20')}")
+
+
+s = "minyoung"
+re = s.center(50)
+print(re)
+re = s.ljust(50)
+print(re)
+re = s.rjust(50)
+print(re)
