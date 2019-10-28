@@ -1,0 +1,41 @@
+import tensorflow as tf
+import numpy as np
+
+x_data = np.array (([0,0],[1,0],[1,1],[0,0],[0,0,],[0,1]))
+
+y_data =np.array([
+    [1,0,0],
+    [0,1,0],
+    [0,0,1],
+    [1,0,0],
+    [1,0,0],
+    [0,0,1]
+])
+
+x = tf.placeholder(tf.float32)
+y = tf.placeholder(tf.float32)
+
+w = tf.Variable(tf.random_uniform([2,3],-1,1))
+b = tf.Variable(tf.zeros([3]))
+l = tf.add(tf.matmul(x,w),b)
+l = tf.nn.relu(l)
+model = tf.nn.softmax(l)
+# cost는 최적화하기 위한것이다. cost가 0과 가까우면 더욱더 최적화 된것이다.
+# axis 이없으면 스칼라값으로 출력되어서 axis 옵션을 사용해야 한다.
+cost = tf.reduce_mean(-tf.reduce_sum(y +tf.log(model),axis = 1))
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
+train = optimizer.minimize(cost)
+
+init = tf.global_variables_initializer()
+sess = tf.Session()
+sess.run(init)
+
+for step in range(100):
+    sess.run(train, feed_dict = {x:x_data,y: y_data})
+    if (step +1 )% 10 == 0:
+        print(step +1, sess.run(cost, feed_dict = {x:x_data , y :y_data}))
+
+prediction = tf.argmax(model, 1)
+target = tf.argmax(y,1)
+print(sess.run(prediction, feed_dict={x:x_data}))
+print(sess.run(target, feed_dict={y:y_data}))
