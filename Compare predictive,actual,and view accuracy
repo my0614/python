@@ -1,0 +1,50 @@
+import tensorflow as tf
+import numpy as np
+
+x_data = np.array (([0,0],[1,0],[1,1],[0,0],[0,0,],[0,1]))
+
+y_data =np.array([
+    [1,0,0],
+    [0,1,0],
+    [0,0,1],
+    [1,0,0],
+    [1,0,0],
+    [0,0,1]
+])
+
+x = tf.placeholder(tf.float32)
+y = tf.placeholder(tf.float32)
+
+w1 = tf.Variable(tf.random_uniform([2,10],-1,1))
+w2 = tf.Variable(tf.random_uniform([10,3],-1,1))
+
+b1 = tf.Variable(tf.zeros([10]))
+b2 = tf.Variable(tf.zeros([3]))
+
+l1 = tf.add(tf.matmul(x,w1),b1)
+l1 = tf.nn.relu(l1)
+
+model = tf.add(tf.matmul(l1,w2),b2)
+
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=model))
+
+opimizer = tf.train.AdamOptimizer(learning_rate = 0.01)
+train = optimizer.minimize(cost)
+
+init = tf.global_variables_initializer()
+sess = tf.Session()
+sess.run(init)
+
+for step in range(100):
+    sess.run(train, feed_dict = {x:x_data, y:y_data})
+    if (step + 1) % 10 == 0:
+        print(step + 1 ,sess.run(cost, feed_dict = {x:x_data,y:y_data}))
+        
+prediction = tf.argmax(model,1)
+target = tf.argmax(y,1)
+print(sess.run(prediction, feed_dict = {x:x_data}))
+print(sess.run(target, feed_dict = {y:y_data}))
+
+is_correct = tf.equal(prediction, target)
+accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+print("정확도 : %.2f" % sess.run(accuracy * 100, feed_dict = {x:x_data, y:y_data}))
