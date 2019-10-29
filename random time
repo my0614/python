@@ -1,0 +1,14 @@
+from datetime import datetime
+import random as r
+import time
+odds = [i for i in range(1,60,2)]
+for i in range(20):
+    this = datetime.today().second
+    if this in odds:
+        print(f"{this}초 _ 홀수")
+    else:
+        print(f"{this}초 _ 짝수")
+
+    wait = r.randint(1,5)
+    time.sleep(wait)
+print(odds)
