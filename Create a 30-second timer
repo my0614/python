@@ -1,0 +1,10 @@
+import time
+print("30초를 세보세요.")
+start = time.time()
+print("============================================")
+print("마음속으로 30초 세신 후 엔터 누르세요.")
+print("============================================")
+while input() == '1':
+    end = time.time()
+    finish = end - start
+    print(finish)
