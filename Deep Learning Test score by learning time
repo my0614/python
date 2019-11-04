@@ -1,0 +1,16 @@
+from keras.models import Sequential
+from keras.layers import Dense
+import keras.optimizers as optimizers
+import tensorflow as tf
+import matplotlib.pyplot as plt
+
+trainx = [10,9,3,2]
+trainy = [90,80,50,30]
+
+model = Sequential()
+model.add(Dense(1, input_dim =1))
+model.summary()
+model.compile(loss='mse',optimizer='adam')
+
+model.fit(trainx,trainy, epochs = 20000, verbose=1)
+print(model.predict([10,9.5,1.5,2]))
