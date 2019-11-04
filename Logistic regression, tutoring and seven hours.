@@ -1,0 +1,42 @@
+import tensorflow as tf
+import numpy as np
+
+seed = 0
+np.random.seed(seed)
+tf.set_random_seed(seed)
+
+x_data = np.array([[2,3],
+    [4,3],
+    [6,4],
+    [8,6],
+    [10,7],
+    [12,8],
+    [14,9]])
+y_data = np.array([0,0,0,1,1,1,1]).reshape(7,1)
+print(x_data)
+print(y_data)
+
+a = tf.Variable(tf.random_uniform([2,1],dtype=tf.float64))
+b = tf.Variable(tf.random_uniform([1],dtype=tf.float64))
+
+# 시모그외드 함수 방정식 세우기
+y = tf.sigmoid(tf.matmul(X,a)+b)
+
+# 오차 구하는 함수
+loss = tf.reduce_mean(y*tf.log(y) + (1-y) * tf.log(1-y))
+
+# 학습률 값(읽는 속도)
+learning_rate = 0.1
+
+# 오차 최소화
+gradient_decent = tf.train.GradientDescentOptimizer(learning_rate).minimize(loss)
+
+predicted = tf.cast(y>0.5 , dtype = tf.float64)
+accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted,y) ,dtype = tf.float64))
+
+with tf.Session() as sess:
+    sess.run(tf.global_variables_initializer())
+    for i in range(3001):
+        a_, b_,loss_,_ = sess.run([a,b,loss,gradient_decent],  feed_dict = {X:x_data,Y:y_data})
+        if (i+1) % 300 == 0:
+            print("step = %d, a1 = %.4f, a2 = %.4f, b= %.4f, loss= %.4f" % (i+1,a_[0],a_[1],b_,loss_))
