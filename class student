@@ -1,0 +1,14 @@
+class StudentInformation:
+    def __init__(self,sub,grade,classroom,num):
+        self.subject = sub
+        self.grade = grade
+        self.classroom = classroom
+        self.num = num
+
+    def print(self):
+        print("좋아하는 과목 : %s\n학년 : %s \n반 : %s\n번호 : %s" % (self.subject,self.grade,self.classroom,self.num))
+
+
+student1 = StudentInformation("math",3,3,3)
+student2 = StudentInformation("pe",1,2,20)
+student1.print()
