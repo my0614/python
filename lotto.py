@@ -14,7 +14,7 @@ for i in range(0,6):
     if int(lotto_input[i]) == lotto_value[i]:
         count += 1
 
-if int(lotto_input[6] == lotto_value[6]):
+if int(lotto_input[6]) == lotto_value[6]:
     b = 1
 else:
     b = 0
